@@ -4,9 +4,13 @@ import scipy.optimize as spopt
 from scipy.constants import hbar
 from scipy.interpolate import splrep, splev
 
-from resonator_tools.utilities import plotting, save_load, Watt2dBm, dBm2Watt
-from resonator_tools.circlefit import circlefit
-from resonator_tools.calibration import calibration
+# from resonator_tools.utilities import plotting, save_load, Watt2dBm, dBm2Watt
+# from resonator_tools.circlefit import circlefit
+# from resonator_tools.calibration import calibration
+
+from utilities import plotting, save_load, Watt2dBm, dBm2Watt
+from circlefit import circlefit
+from calibration import calibration
 
 ##
 ## z_data_raw denotes the raw data
@@ -200,9 +204,9 @@ class reflection_port(circlefit, save_load, plotting, calibration):
 		Qc_ann = ax3.annotate('Qc = %e +- %e' % (self.fitresults['Qc'],self.fitresults['Qc_err']),xy=(0.1, 0.4), xycoords='axes fraction')
 		Qi_ann = ax3.annotate('Qi = %e +- %e' % (self.fitresults['Qi'],self.fitresults['Qi_err']),xy=(0.1, 0.2), xycoords='axes fraction')
 		axcolor = 'lightgoldenrodyellow'
-		axdelay = plt.axes([0.25, 0.05, 0.65, 0.03], axisbg=axcolor)
-		axf2 = plt.axes([0.25, 0.1, 0.65, 0.03], axisbg=axcolor)
-		axf1 = plt.axes([0.25, 0.15, 0.65, 0.03], axisbg=axcolor)
+		axdelay = plt.axes([0.25, 0.05, 0.65, 0.03], facecolor=axcolor)
+		axf2 = plt.axes([0.25, 0.1, 0.65, 0.03], facecolor=axcolor)
+		axf1 = plt.axes([0.25, 0.15, 0.65, 0.03], facecolor=axcolor)
 		sscale = 10.
 		sdelay = Slider(axdelay, 'delay', -1., 1., valinit=self.__delay/(sscale*self.__delay),valfmt='%f')
 		df = (fmax-fmin)*0.05
@@ -468,9 +472,9 @@ class notch_port(circlefit, save_load, plotting, calibration):
 		Qc_ann = ax3.annotate('Qc = %e +- %e' % (self.fitresults['absQc'],self.fitresults['absQc_err']),xy=(0.1, 0.4), xycoords='axes fraction')
 		Qi_ann = ax3.annotate('Qi = %e +- %e' % (self.fitresults['Qi_dia_corr'],self.fitresults['Qi_dia_corr_err']),xy=(0.1, 0.2), xycoords='axes fraction')
 		axcolor = 'lightgoldenrodyellow'
-		axdelay = plt.axes([0.25, 0.05, 0.65, 0.03], axisbg=axcolor)
-		axf2 = plt.axes([0.25, 0.1, 0.65, 0.03], axisbg=axcolor)
-		axf1 = plt.axes([0.25, 0.15, 0.65, 0.03], axisbg=axcolor)
+		axdelay = plt.axes([0.25, 0.05, 0.65, 0.03], facecolor=axcolor)
+		axf2 = plt.axes([0.25, 0.1, 0.65, 0.03], facecolor=axcolor)
+		axf1 = plt.axes([0.25, 0.15, 0.65, 0.03], facecolor=axcolor)
 		sscale = 10.
 		sdelay = Slider(axdelay, 'delay', -1., 1., valinit=self.__delay/(sscale*self.__delay),valfmt='%f')
 		df = (fmax-fmin)*0.05
